@@ -1,28 +1,38 @@
-import React, { useState } from 'react'
+import React, { Component } from "react";
 
-export default function Easy() {
-
-    const [count, setCount] = useState(0);
-
-  function Counter() {
-    setCount((c) => c + 1);
+class Easy extends Component {
+  constructor(props) {
+    super(props);
+    this.state = {
+      count: 0,
+    };
   }
 
-  function Minuser() {
-    setCount((c) => c - 1);
-  }
+  Counter = () => {
+    this.setState((prevState) => ({
+      count: prevState.count + 1,
+    }));
+  };
 
-  return (
-    <div className="App">
-      <button className="plusButton" onClick={Counter}>
-        Counter
-      </button>
-      <button className="minusButton" onClick={Minuser}>
-        Minuser
-      </button>
-      <h1>{count}</h1>
-    </div>
-  );
+  Minuser = () => {
+    this.setState((prevState) => ({
+      count: prevState.count - 1,
+    }));
+  };
+
+  render() {
+    return (
+      <div className="App">
+        <button className="plusButton" onClick={this.Counter}>
+          Counter
+        </button>
+        <button className="minusButton" onClick={this.Minuser}>
+          Minuser
+        </button>
+        <h1>{this.state.count}</h1>
+      </div>
+    );
+  }
 }
 
-
+export default Easy;
